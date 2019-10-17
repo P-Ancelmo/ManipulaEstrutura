@@ -22,7 +22,7 @@ typedef struct {
 } CADASTRO;
 
 void preencheVetor (CADASTRO cadastro[]) {
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < numCad; i++) {
 
         printf("Escreva o nome da %d° pessoa(máximo 40 caracteres): ", i+1);
         gets(cadastro[i].nome);
