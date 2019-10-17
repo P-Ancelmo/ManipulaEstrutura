@@ -32,6 +32,7 @@ typedef struct
 	ENDERECO endereco;
 	TELEFONE telefone;
 	ANIVERSARIO data;
+	char observacao[101];
 }PESSOA;
 
 typedef struct {
