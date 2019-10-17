@@ -49,8 +49,13 @@ void preencheVetor (CADASTRO cadastro[]) {
         printf("Escreva o CPF : ");
         gets(cadastro[i].CPF);
 
-        printf("Escreva o estado civil\n1- solteiro(a)\n2- casado(a)\n3- viúvo(a)\n4- divorciado(a)\n  : ");
-        getchar(cadastro[i].estadoCivil);
+        printf("Escreva o estado civil\n 1- solteiro(a)\n 2- casado(a)\n3- viúvo(a)\n 4- divorciado(a)\n  : ");
+        
+        do
+        {
+            getchar(cadastro[i].estadoCivil);
+        }
+        while(cadastro[i].estadoCivil < '1' || cadastro[i].estadoCivil > '4');
 
         printf("Escreva o telefone : ");
         gets(cadastro[i].telefone);
