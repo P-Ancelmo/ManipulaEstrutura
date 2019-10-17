@@ -1,4 +1,5 @@
 #include <stdio.h>
+#define numCad 5
 typedef struct {
     char rua[31];
     char bairro[31];
@@ -20,7 +21,7 @@ typedef struct {
 } CADASTRO;
 
 void preencheVetor (CADASTRO cadastro[]) {
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < numCad; i++) {
 
         printf("Escreva o nome(máximo 40 caracteres) : ");
         gets(cadastro[i].nome);
@@ -88,7 +89,19 @@ void preencheVetor (CADASTRO cadastro[]) {
     }
 }
 
+void achaHomem(CADASTRO cadastro[]){
+    for(int i = 0; i < numCad; ++i)
+        if(cadastro[i].sexo == '1')
+            printf("Indice: %d\nNome: %s\n\n",i,cadastro[i].nome);
+}
+
+void achaHomem(CADASTRO cadastro[]){
+    for(int i = 0; i < numCad; ++i)
+        if(cadastro[i].salario > 1000)
+            printf("Indice: %d\nNome: %s\n\n",i,cadastro[i].nome);
+}
+
 int main(void){
-    CADASTRO cadastro[5];
+    CADASTRO cadastro[numCad];
     preencheVetor(cadastro);
 }
