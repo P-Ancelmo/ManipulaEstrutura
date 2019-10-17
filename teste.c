@@ -1,38 +1,26 @@
+#include <stdio.h>
 typedef struct {
     char rua[31];
     char bairro[31];
     char cidade[21];
     char estado[3];
     char cep[9];
-} ENDEREÇO;
+} ENDERECO;
 
 typedef struct {
     char nome[41];
-    ENDEREÇO endereco;
+    ENDERECO endereco;
     float salario;
     char identidade[10];
     char CPF[12];
-    char estadoCivil[2];
+    char estadoCivil;
     char telefone[12];
     int idade;
-    char sexo[2];
+    char sexo;
 } CADASTRO;
 
-/*
-    Estado Civil:
-    1- solteiro
-    2- casado
-    3- divorciado
-    4- viuvo
-
-    Sexo:
-    1- masculino
-    2- feminino
-    3- indefinido
-*/
-
 void preencheVetor (CADASTRO cadastro[]) {
-    for (int i = 0; i <5; i++) {
+    for (int i = 0; i < 5; i++) {
 
         printf("Escreva o nome(máximo 40 caracteres) : ");
         gets(cadastro[i].nome);
@@ -61,8 +49,7 @@ void preencheVetor (CADASTRO cadastro[]) {
         printf("Escreva o CPF : ");
         gets(cadastro[i].CPF);
 
-        printf("Escreva o estado civil\n1- solteiro(a)\n2- casado(a)\n
-        3- viúvo(a)\n4- divorciado(a)\n  : ");
+        printf("Escreva o estado civil\n1- solteiro(a)\n2- casado(a)\n3- viúvo(a)\n4- divorciado(a)\n  : ");
         getchar(cadastro[i].estadoCivil);
 
         printf("Escreva o telefone : ");
@@ -71,9 +58,12 @@ void preencheVetor (CADASTRO cadastro[]) {
         printf("Escreva a idade : ");
         scanf("%d", &cadastro[i].idade);
 
-        printf("Escreva o sexo\n1- masculino\n2- feminino\n3-indefinido\n ");
+        printf("Escreva o sexo\n1- masculino\n2- feminino\n3- indefinido\n ");
         getchar(cadastro[i].sexo);
     }
 }
 
-void maiorIdade (CADASTRO cadastro[]) {
+int main(void){
+    CADASTRO cadastro[5];
+    preencheVetor(cadastro);
+}
