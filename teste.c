@@ -35,22 +35,42 @@ void preencheVetor (CADASTRO cadastro[]) {
         gets(cadastro[i].endereco.cidade);
 
         printf("Escreva a sigla do estado(máximo 2 caracteres): ");
-        gets(cadastro[i].endereco.estado);
-
-        printf("Escreva o cep : ");
-        gets(cadastro[i].endereco.cep);
+        gets(cadastro[i].endereco.estado);      
+        
+        
+        do
+        {
+            printf("Escreva o CEP : ");
+            gets(cadastro[i].endereco.cep);
+            int verificacao = 0; //verificar o CEP
+            for(int j; j < 8; j++)
+            {
+                if(cadastro[i].endereco.cep[j] < '1' || cadastro[i].endereco.cep[j] > '9')
+                    verificacao += 1;
+            }
+            if(verificacao != 8)
+                printf("CEP invalido, digite apenas números");
+        }
+        while (verificacao != 8);
 
         printf("Escreva o salário : ");
         scanf("%f", &cadastro[i].salario);
+        getchar();
 
         printf("Escreva a identidade : ");
         gets(cadastro[i].identidade);
 
         printf("Escreva o CPF : ");
-        gets(cadastro[i].CPF);
+        gets(cadastro[i].CPF);        
+        
+         do
+        {
+            printf("Escreva o estado civil\n 1- solteiro(a)\n 2- casado(a)\n 3- viúvo(a)\n 4- divorciado(a)\n  : ");
+            scanf("%c",&cadastro[i].estadoCivil);
+            getchar();
+        }
+        while(cadastro[i].estadoCivil < '1' || cadastro[i].estadoCivil > '4');
 
-        printf("Escreva o estado civil\n1- solteiro(a)\n2- casado(a)\n3- viúvo(a)\n4- divorciado(a)\n  : ");
-        scanf("%c",&cadastro[i].estadoCivil);
 
         printf("Escreva o telefone : ");
         gets(cadastro[i].telefone);
@@ -58,8 +78,13 @@ void preencheVetor (CADASTRO cadastro[]) {
         printf("Escreva a idade : ");
         scanf("%d", &cadastro[i].idade);
 
-        printf("Escreva o sexo\n1- masculino\n2- feminino\n3- indefinido\n ");
-        scanf("%c",&cadastro[i].sexo);
+        printf("Escreva o sexo\n 1- masculino\n 2- feminino\n 3- indefinido\n ");
+        
+        do
+        {
+            scanf("%c",&cadastro[i].sexo);
+        }
+        while(cadastro[i].sexo < '1' || cadastro[i].sexo > '3');
     }
 }
 
