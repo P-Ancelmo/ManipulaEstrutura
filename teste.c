@@ -29,61 +29,67 @@ void preencheVetor (CADASTRO cadastro[]) {
 
         printf("Escreva a rua(máximo 30 caracteres) : ");
         gets(cadastro[i].endereco.rua);
-       
+
         printf("Escreva o bairro(máximo 30 caracteres): ");
         gets(cadastro[i].endereco.bairro);
 
         printf("Escreva a cidade(máximo 20 caracteres): ");
         gets(cadastro[i].endereco.cidade);
 
-        do
+        printf("Escreva a sigla do estado(máximo 2 caracteres): ");
+        gets(cadastro[i].endereco.estado);
+
+        /*do
         {
             printf("Escreva a sigla do estado(máximo 2 caracteres): ");
             gets(cadastro[i].endereco.estado);
-            if(cadastro[i].endereco.estado != "AC" || cadastro[i].endereco.estado != "AL" || cadastro[i].endereco.estado != "AP" || cadastro[i].endereco.estado != "AM" || cadastro[i].endereco.estado != "BA" || cadastro[i].endereco.estado != "CE" || cadastro[i].endereco.estado != "DF" || cadastro[i].endereco.estado != "ES" || cadastro[i].endereco.estado != "GO" || cadastro[i].endereco.estado != "MA" || cadastro[i].endereco.estado != "MT" || cadastro[i].endereco.estado != "MS" || cadastro[i].endereco.estado != "MG" || cadastro[i].endereco.estado != "PA" || cadastro[i].endereco.estado != "PB" || cadastro[i].endereco.estado != "PR" || cadastro[i].endereco.estado != "PE" || cadastro[i].endereco.estado != "PI" || cadastro[i].endereco.estado != "RJ" || cadastro[i].endereco.estado != "RN" || cadastro[i].endereco.estado != "RS" || cadastro[i].endereco.estado != "RO" || cadastro[i].endereco.estado != "RR" || cadastro[i].endereco.estado != "SC" || cadastro[i].endereco.estado != "SP" || cadastro[i].endereco.estado != "SE"|| cadastro[i].endereco.estado != "TO");
-                printf("Sigla inválida, por favor digite a sigla com apenas dois caracteres maiúsculos");    
+            if(cadastro[i].endereco.estado != "AC" || cadastro[i].endereco.estado != "AL" || cadastro[i].endereco.estado != "AP" || cadastro[i].endereco.estado != "AM" || cadastro[i].endereco.estado != "BA" || cadastro[i].endereco.estado != "CE" || cadastro[i].endereco.estado != "DF" || cadastro[i].endereco.estado != "ES" || cadastro[i].endereco.estado != "GO" || cadastro[i].endereco.estado != "MA" || cadastro[i].endereco.estado != "MT" || cadastro[i].endereco.estado != "MS" || cadastro[i].endereco.estado != "MG" || cadastro[i].endereco.estado != "PA" || cadastro[i].endereco.estado != "PB" || cadastro[i].endereco.estado != "PR" || cadastro[i].endereco.estado != "PE" || cadastro[i].endereco.estado != "PI" || cadastro[i].endereco.estado != "RJ" || cadastro[i].endereco.estado != "RN" || cadastro[i].endereco.estado != "RS" || cadastro[i].endereco.estado != "RO" || cadastro[i].endereco.estado != "RR" || cadastro[i].endereco.estado != "SC" || cadastro[i].endereco.estado != "SP" || cadastro[i].endereco.estado != "SE"|| cadastro[i].endereco.estado != "TO")
+                printf("Sigla inválida, por favor digite a sigla com apenas dois caracteres maiúsculos");
         }
-        while(cadastro[i].endereco.estado != "AC" || cadastro[i].endereco.estado != "AL" || cadastro[i].endereco.estado != "AP" || cadastro[i].endereco.estado != "AM" || cadastro[i].endereco.estado != "BA" || cadastro[i].endereco.estado != "CE" || cadastro[i].endereco.estado != "DF" || cadastro[i].endereco.estado != "ES" || cadastro[i].endereco.estado != "GO" || cadastro[i].endereco.estado != "MA" || cadastro[i].endereco.estado != "MT" || cadastro[i].endereco.estado != "MS" || cadastro[i].endereco.estado != "MG" || cadastro[i].endereco.estado != "PA" || cadastro[i].endereco.estado != "PB" || cadastro[i].endereco.estado != "PR" || cadastro[i].endereco.estado != "PE" || cadastro[i].endereco.estado != "PI" || cadastro[i].endereco.estado != "RJ" || cadastro[i].endereco.estado != "RN" || cadastro[i].endereco.estado != "RS" || cadastro[i].endereco.estado != "RO" || cadastro[i].endereco.estado != "RR" || cadastro[i].endereco.estado != "SC" || cadastro[i].endereco.estado != "SP" || cadastro[i].endereco.estado != "SE"|| cadastro[i].endereco.estado != "TO");
-        
+        while(cadastro[i].endereco.estado != "AC" || cadastro[i].endereco.estado != "AL" || cadastro[i].endereco.estado != "AP" || cadastro[i].endereco.estado != "AM" || cadastro[i].endereco.estado != "BA" || cadastro[i].endereco.estado != "CE" || cadastro[i].endereco.estado != "DF" || cadastro[i].endereco.estado != "ES" || cadastro[i].endereco.estado != "GO" || cadastro[i].endereco.estado != "MA" || cadastro[i].endereco.estado != "MT" || cadastro[i].endereco.estado != "MS" || cadastro[i].endereco.estado != "MG" || cadastro[i].endereco.estado != "PA" || cadastro[i].endereco.estado != "PB" || cadastro[i].endereco.estado != "PR" || cadastro[i].endereco.estado != "PE" || cadastro[i].endereco.estado != "PI" || cadastro[i].endereco.estado != "RJ" || cadastro[i].endereco.estado != "RN" || cadastro[i].endereco.estado != "RS" || cadastro[i].endereco.estado != "RO" || cadastro[i].endereco.estado != "RR" || cadastro[i].endereco.estado != "SC" || cadastro[i].endereco.estado != "SP" || cadastro[i].endereco.estado != "SE"|| cadastro[i].endereco.estado != "TO");*/
+
+        int verificacao = 0; //verificar o CEP
         do
         {
             printf("Escreva o CEP : ");
             gets(cadastro[i].endereco.cep);
-            int verificacao = 0; //verificar o CEP
-            for(int j; j < 8; j++)
+            verificacao = 0; //verificar o CEP
+            for(int j = 0; j < 8; j++)
             {
-                if(cadastro[i].endereco.cep[j] < '0' || cadastro[i].endereco.cep[j] > '9')
+                if(cadastro[i].endereco.cep[j] >= '0' && cadastro[i].endereco.cep[j] <= '9')
                     verificacao += 1;
             }
-            if(verificacao != 8 || strlen(cadastro[i].endereco.cep) < 8)
-                printf("CEP invalido, digite apenas números e no mínimo 8 numeros");
+            if(verificacao != 8 || strlen(cadastro[i].endereco.cep) != 8){
+                printf("CEP invalido, digite apenas números e no mínimo 8 numeros\n");
+            }
         }
-        while (verificacao != 8 || strlen(cadastro[i].endereco.cep) < 8);
+        while (verificacao < 8 || strlen(cadastro[i].endereco.cep) < 8);
 
         printf("Escreva o salário : ");
         scanf("%f", &cadastro[i].salario);
         getchar();
 
+        int verificacao2 = 0; //verificar a identidade
         do
         {
             printf("Escreva a identidade : ");
             gets(cadastro[i].identidade);
-            int verificacao = 0; //verificar a identidade
+            verificacao2 = 0; //verificar a identidade
             for(int j = 0; j < 9; j++)
             {
-                if(cadastro[i].identidade[j] < '0' || cadastro[i].identidade[j] > '9')
-                    verificacao += 1;
+                if(cadastro[i].identidade[j] >= '0' && cadastro[i].identidade[j] <= '9')
+                    verificacao2 += 1;
             }
-             if(verificacao != 9 || strlen(cadastro[i].identidade) < 9)
-                printf("CEP invalido, digite apenas números e no mínimo 9 numeros");
-        }while (verificacao != 9 || strlen(cadastro[i].identidade) < 9);
+             if(verificacao2 != 9 || strlen(cadastro[i].identidade) < 9)
+                printf("Identidade invalido, digite apenas números e no mínimo 9 numeros");
+        }while (verificacao2 != 9 || strlen(cadastro[i].identidade) < 9);
 
         printf("Escreva o CPF : ");
-        gets(cadastro[i].CPF);        
-        
+        gets(cadastro[i].CPF);
+
          do
         {
-            printf("Escreva o estado civil\n 1- solteiro(a)\n 2- casado(a)\n 3- viúvo(a)\n 4- divorciado(a)\n  : ");
+            printf("Escreva o estado civil\n 1- solteiro(a)\n 2- casado(a)\n 3- viúvo(a)\n 4- divorciado(a)\n Reposta: ");
             scanf("%c",&cadastro[i].estadoCivil);
             getchar();
         }
@@ -97,7 +103,7 @@ void preencheVetor (CADASTRO cadastro[]) {
         scanf("%d", &cadastro[i].idade);
 
         printf("Escreva o sexo\n 1- masculino\n 2- feminino\n 3- indefinido\n ");
-        
+
         do
         {
             scanf("%c",&cadastro[i].sexo);
@@ -121,7 +127,7 @@ void achaSalario(CADASTRO cadastro[]){
 
 
 void achaRG(CADASTRO cadastro[], char rg[]){
-    char sexo[10], estadoCivil[30];
+    char sex[11], estadoCivil[30];
     for(int i = 0; i < numCad; ++i){
         if(cadastro[i].identidade == rg){
             printf("Nome: %s\n",cadastro[i].nome);
@@ -135,32 +141,32 @@ void achaRG(CADASTRO cadastro[], char rg[]){
             printf("CPF: %s\n",cadastro[i].CPF);
             switch(cadastro[i].estadoCivil){
                 case '1':
-                    estadoCivil = "Solteiro(a)";
+                    printf("Estado civil solteiro(a)\n");
                     break;
                 case '2':
-                    estadoCivil = "Casado(a)";
+                    printf("Estado civil casado(a)\n");
                     break;
                 case '3':
-                    estadoCivil = "Divorciado(a)";
+                    printf("Estado civil divorciado(a)\n");
                     break;
                 case '4':
-                    estadoCivil = "Viuvo(a)";
-            }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+                    printf("Estado civil viuvo(a)\n");
+            }
             printf("Estado Civil: %s\n",estadoCivil);
             printf("Telefone: %s\n",cadastro[i].telefone);
             printf("Idade: %d\n",cadastro[i].idade);
             switch(cadastro[i].sexo){
                 case '1':
-                    sexo = "Masculino";
+                    printf("Sexo masculino\n");
                     break;
                 case '2':
-                    sexo = "Feminino";
+                    printf("Sexo feminino\n");
                     break;
                 case '3':
-                    sexo = "Indefinido";
+                    printf("Sexo indefinido\n");
                     break;
             }
-            printf("Sexo: %s\n",sexo);
+
             return ;
         }
     }
@@ -175,7 +181,6 @@ int main(void){
         scanf("%s",rg);
         achaRG(cadastro,rg);
         printf("Deseja continuar? S - Sim N - Nao: ");
-        scanf("%c",continuar);
+        scanf("%c",&continuar);
     }while(continuar == 'S');
 }
-
