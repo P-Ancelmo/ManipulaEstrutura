@@ -11,4 +11,27 @@ typedef struct {
     char pais[31];
 } ENDERECO;
 
+typedef struct 
+{
+	char ddd[3];
+	char numero[10];
+	
+}TELEFONE;
+
+typedef struct 
+{
+	char dia[3];
+	char mes[3];
+	char ano[5];
+}ANIVERSARIO;
+
+typedef struct 
+{
+	char nome[41];
+	char eMail[21];
+	ENDERECO endereco;
+	TELEFONE telefone;
+	ANIVERSARIO data;
+}PESSOA;
+
 typedef struct {
