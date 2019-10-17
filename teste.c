@@ -46,20 +46,31 @@ void preencheVetor (CADASTRO cadastro[]) {
             int verificacao = 0; //verificar o CEP
             for(int j; j < 8; j++)
             {
-                if(cadastro[i].endereco.cep[j] < '1' || cadastro[i].endereco.cep[j] > '9')
+                if(cadastro[i].endereco.cep[j] < '0' || cadastro[i].endereco.cep[j] > '9')
                     verificacao += 1;
             }
-            if(verificacao != 8)
-                printf("CEP invalido, digite apenas números");
+            if(verificacao != 8 || strlen(cadastro[i].endereco.cep) < 8)
+                printf("CEP invalido, digite apenas números e no mínimo 8 numeros");
         }
-        while (verificacao != 8);
+        while (verificacao != 8 || strlen(cadastro[i].endereco.cep) < 8);
 
         printf("Escreva o salário : ");
         scanf("%f", &cadastro[i].salario);
         getchar();
 
-        printf("Escreva a identidade : ");
-        gets(cadastro[i].identidade);
+        do
+        {
+            printf("Escreva a identidade : ");
+            gets(cadastro[i].identidade);
+            int verificacao = 0; //verificar a identidade
+            for(int j = 0; j < 9; j++)
+            {
+                if(cadastro[i].identidade[j] < '0' || cadastro[i].identidade[j] > '9')
+                    verificacao += 1;
+            }
+             if(verificacao != 9 || strlen(cadastro[i].identidade) < 9)
+                printf("CEP invalido, digite apenas números e no mínimo 9 numeros");
+        }while (verificacao != 9 || strlen(cadastro[i].identidade) < 9);
 
         printf("Escreva o CPF : ");
         gets(cadastro[i].CPF);        
