@@ -111,13 +111,70 @@ void achaHomem(CADASTRO cadastro[]){
             printf("Indice: %d\nNome: %s\n\n",i,cadastro[i].nome);
 }
 
-void achaHomem(CADASTRO cadastro[]){
+void achaSalario(CADASTRO cadastro[]){
     for(int i = 0; i < numCad; ++i)
         if(cadastro[i].salario > 1000)
             printf("Indice: %d\nNome: %s\n\n",i,cadastro[i].nome);
 }
 
+
+
+void achaRG(CADASTRO cadastro[], char rg[]){
+    char sexo[10], estadoCivil[30];
+    for(int i = 0; i < numCad; ++i){
+        if(cadastro[i].identidade == rg){
+            printf("Nome: %s\n",cadastro[i].nome);
+            printf("Rua: %s\n",cadastro[i].endereco.rua);
+            printf("Bairro: %s\n",cadastro[i].endereco.bairro);
+            printf("Cidade: %s\n",cadastro[i].endereco.cidade);
+            printf("Estado: %s\n",cadastro[i].endereco.estado);
+            printf("CEP: %s\n",cadastro[i].endereco.cep);
+            printf("Salario: %.2f\n",cadastro[i].salario);
+            printf("RG: %s\n",cadastro[i].identidade);
+            printf("CPF: %s\n",cadastro[i].CPF);
+            switch(cadastro[i].estadoCivil){
+                case '1':
+                    estadoCivil = "Solteiro(a)";
+                    break;
+                case '2':
+                    estadoCivil = "Casado(a)";
+                    break;
+                case '3':
+                    estadoCivil = "Divorciado(a)";
+                    break;
+                case '4':
+                    estadoCivil = "Viuvo(a)";
+            }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+            printf("Estado Civil: %s\n",estadoCivil);
+            printf("Telefone: %s\n",cadastro[i].telefone);
+            printf("Idade: %d\n",cadastro[i].idade);
+            switch(cadastro[i].sexo){
+                case '1':
+                    sexo = "Masculino";
+                    break;
+                case '2':
+                    sexo = "Feminino";
+                    break;
+                case '3':
+                    sexo = "Indefinido";
+                    break;
+            }
+            printf("Sexo: %s\n",sexo);
+            return ;
+        }
+    }
+}
+
 int main(void){
     CADASTRO cadastro[numCad];
     preencheVetor(cadastro);
+    char rg[9], continuar;
+    do{
+        printf("Digite uma identidade para visualização: ");
+        scanf("%s",rg);
+        achaRG(cadastro,rg);
+        printf("Deseja continuar? S - Sim N - Nao: ");
+        scanf("%c",continuar);
+    }while(continuar == 'S');
 }
+
