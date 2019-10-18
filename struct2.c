@@ -62,7 +62,6 @@ void buscaNome (PESSOA agenda[]) { //busca pessoas pelo nome (c)
 
 void buscaMes (PESSOA agenda[]) { //busca pessoas pelo mes de aniversário (d)
 	char mes;
-	int v = 1;
 	printf("insira o mes desejado:\n");
 	gets(mes);
 	while (mes < 1 || mes > 12) {
