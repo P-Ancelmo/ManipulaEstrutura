@@ -118,3 +118,39 @@ void buscaMeseDia (PESSOA agenda[]) { //busca pessoas pelo mes e dia de anivers�
 		}
 	}
 }
+
+int main () {
+	int opc;
+	int i = 0;
+	
+	while (i == 0) {	
+		printf("escolha uma opção:\n");
+		printf("1 - inserir pessoa\n2 - retirar pessoa\n3 - buscar por nome\n4 - buscar por mes\n 5 - buscar por mes e dia\n 6 - mostrar agenda\n7 - sair\n");
+		switch(opc) {
+			case 1:
+				inserePessoa(agenda[100]);
+				break;
+			case 2:
+				retiraPessoa(agenda[100]);
+				break;
+			case 3:
+				buscaNome(agenda[100]);
+				break;
+			case 4:
+				buscaMes(agenda[100]);
+				break;
+			case 5:
+				buscaMeseDia(agenda[100]);
+				break;
+			case 6:
+				imprimeAgenda(agenda[100]);
+				break;
+			case 7:
+				i = 1;
+				break;
+			else:
+				printf("comando inválido");
+				break;
+		}
+	}
+}	
