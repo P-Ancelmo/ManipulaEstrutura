@@ -35,4 +35,27 @@ typedef struct
 	char observacao[101];
 }PESSOA;
 
-typedef struct {
+PESSOA agenda[100];//declarar variável agenda (b)
+
+void buscaNome (PESSOA agenda[]) { //busca pessoas pelo nome (c)
+	char nome;
+	printf("insira o nome desejado:\n");
+	gets(nome);
+	for (int i = 0; i > 100; i++) {
+		if (agenda[i].nome == nome) {  //deve procurar só pelo primeiro nome, estou com dúvida sobre como fazer
+			printf("nome: %s\n", agenda[i].nome);
+			printf("eMail: %s\n", agenda[i].eMail);	
+			printf("rua: %s\n", agenda[i].endereco.rua);	
+			printf("numero: %d\n", agenda[i].endereco.numero);	
+			printf("complemento: %s\n", agenda[i].endereco.complemento);	
+			printf("bairro: %s\n", agenda[i].endereco.bairro);	
+			printf("CEP: %s\n", agenda[i].endereco.cep);	
+			printf("cidade: %s\n", agenda[i].endereco.cidade);	
+			printf("estado: %s\n", agenda[i].endereco.estado);	
+			printf("país: %s\n", agenda[i].endereco.pais);	
+			printf("telefone: %s%s\n", agenda[i].telefone.ddd, agenda[i].telefone.numero);	
+			printf("aniversário: %s/%s/%s\n", agenda[i].data.dia, agenda[i].data.mes, agenda[i].data.ano);	
+			printf("Observações: %s\n", agenda[i].observacao);	
+		}
+	}
+}
