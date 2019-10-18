@@ -225,5 +225,7 @@ int main(void){
     CADASTRO cadastro[numCad];
     preencheVetor(cadastro);    
     achaRG(cadastro);
+    achaHomem(cadastro);
+    achaSalario(cadastro);
     return 0;
 }
