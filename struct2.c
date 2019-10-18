@@ -148,7 +148,7 @@ int main () {
 			case 7:
 				i = 1;
 				break;
-			else:
+			default
 				printf("comando inválido");
 				break;
 		}
