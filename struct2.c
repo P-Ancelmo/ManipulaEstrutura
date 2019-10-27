@@ -77,7 +77,26 @@ void retiraPessoa (PESSOA agenda[]){ //retira pessoa: retira todos os dados dess
     for (int i = 0; i < pessoasInseridas; i++){
         if (strncmp(agenda[i].nome, nome, strlen(nome)) == 0){
             for (int j = i; j < pessoasInseridas - 1; j++){
+                /*é isso aqui:*/
                 agenda[j] = agenda[j+1];
+                /*ou isso aqui:
+                agenda[j].nome = agenda[j+1].nome
+                agenda[j].eMail = agenda[j+1].eMail
+                agenda[j].endereco.rua = agenda[j+1].endereco.rua
+                agenda[j].endereco.numero = agenda[j+1].endereco.numero
+                agenda[j].endereco.complemento = agenda[j+1].endereco.complemento
+                agenda[j].endereco.bairro = agenda[j+1].endereco.bairro
+                agenda[j].endereco.cep = agenda[j+1].endereco.cep
+                agenda[j].endereco.cidade = agenda[j+1].endereco.cidade
+                agenda[j].endereco.estado = agenda[j+1].endereco.estado
+                agenda[j].endereco.pais = agenda[j+1].endereco.pais
+                agenda[j].telefone.ddd = agenda[j+1].telefone.ddd
+                agenda[j].telefone.numero = agenda[j+1].telefone.numero
+                agenda[j].data.dia = agenda[j+1].data.dia
+                agenda[j].data.mes = agenda[j+1].data.mes
+                agenda[j].data.ano = agenda[j+1].data.ano
+                agenda[j].observacao = agenda[j+1].observacao
+                */
             }
             pessoasInseridas--;
         }
