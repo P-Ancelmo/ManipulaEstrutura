@@ -273,5 +273,4 @@ void arrumaAgenda (PESSOA agenda[]){
             }
         }
     }
-    
 }
