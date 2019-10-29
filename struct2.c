@@ -38,7 +38,6 @@ void arrumaAgenda (PESSOA agenda[]);
 
 void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de nome (a.2)
     char c[20];
-    
     printf("\nNome: ");
     gets(c);
     gets(agenda[pessoasInseridas].nome);
@@ -76,7 +75,6 @@ void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de n
     gets(agenda[pessoasInseridas].observacao);
     printf("\nPessoa Inserida com sucesso!\n\n");
     pessoasInseridas++;
-    
 }
 
 void retiraPessoa (PESSOA agenda[]){ //retira pessoa: retira todos os dados dessa pessoa e desloca todos os elementos seguintes do vetor para a posição anterior (b.2)
@@ -90,7 +88,7 @@ void retiraPessoa (PESSOA agenda[]){ //retira pessoa: retira todos os dados dess
     }
     if (i == pessoasInseridas){
         printf("\nNenhuma pessoa encontrada!\n\n");
-        return ;
+        return;
     }
     for (; i < pessoasInseridas - 1; i++){
         agenda[i] = agenda[i+1];
