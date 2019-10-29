@@ -38,7 +38,7 @@ void arrumaAgenda (PESSOA agenda[]);
 
 void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de nome (a.2)
     char c[20];
-
+    
     printf("\nNome: ");
     gets(c);
     gets(agenda[pessoasInseridas].nome);
@@ -46,7 +46,7 @@ void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de n
     gets(agenda[pessoasInseridas].eMail);
     printf("Rua: ");
     gets(agenda[pessoasInseridas].endereco.rua);
-    printf("Numero: ");
+    printf("Número: ");
     scanf("%d", &agenda[pessoasInseridas].endereco.numero);
     printf("Complemento: ");
     gets(c);
@@ -59,43 +59,43 @@ void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de n
     gets(agenda[pessoasInseridas].endereco.cidade);
     printf("Estado: ");
     gets(agenda[pessoasInseridas].endereco.estado);
-    printf("Pais: ");
+    printf("País: ");
     gets(agenda[pessoasInseridas].endereco.pais);
     printf("DDD: ");
     gets(agenda[pessoasInseridas].telefone.ddd);
     printf("Telefone: ");
     gets(agenda[pessoasInseridas].telefone.numero);
-    printf("Aniversario\n");
+    printf("Aniversário\n");
     printf("Dia: ");
-    gets( agenda[pessoasInseridas].data.dia);
-    printf("Mes: ");
-    gets( agenda[pessoasInseridas].data.mes);
+    gets(agenda[pessoasInseridas].data.dia);
+    printf("Mês: ");
+    gets(agenda[pessoasInseridas].data.mes);
     printf("Ano: ");
-    gets( agenda[pessoasInseridas].data.ano);
-    printf("Observacoes: ");
-    gets( agenda[pessoasInseridas].observacao);
-    printf("Pessoa Inserida com sucesso\n\n");
+    gets(agenda[pessoasInseridas].data.ano);
+    printf("Observações: ");
+    gets(agenda[pessoasInseridas].observacao);
+    printf("\nPessoa Inserida com sucesso!\n\n");
     pessoasInseridas++;
-
+    
 }
 
 void retiraPessoa (PESSOA agenda[]){ //retira pessoa: retira todos os dados dessa pessoa e desloca todos os elementos seguintes do vetor para a posição anterior (b.2)
     char nome[41];
-    printf("\nQual pessoa gostaria de retirar de sua agenda? (Atençao: ao digitar o nome dessa pessoa você estara retirando todos os dados da mesma)\n");
+    printf("\nQual pessoa gostaria de retirar de sua agenda? (Atenção: ao digitar o nome dessa pessoa você estará retirando todos os dados da mesma)\n");
     printf("Nome da pessoa a ser retirada: ");
     scanf("%s", nome);
     int i = 0;
-    while(strncmp(agenda[i].nome, nome, strlen(nome)) != 0 && i < pessoasInseridas){
+    while (strncmp(agenda[i].nome, nome, strlen(nome)) != 0 && i < pessoasInseridas){
         i++;
     }
-    if(i == pessoasInseridas){
-        printf("\nNenhuma pessoa encontrada\n\n");
+    if (i == pessoasInseridas){
+        printf("\nNenhuma pessoa encontrada!\n\n");
         return ;
     }
-    for (; i < pessoasInseridas-1; i++){
+    for (; i < pessoasInseridas - 1; i++){
         agenda[i] = agenda[i+1];
     }
-    printf("\nPessoa excluida com sucesso\n\n");
+    printf("\nPessoa excluída com sucesso!\n\n");
     pessoasInseridas--;
 }
 
@@ -118,22 +118,22 @@ void buscaNome (PESSOA agenda[]){ //busca pessoas pelo nome (c)
             printf("Estado: %s\n", agenda[i].endereco.estado);
             printf("País: %s\n", agenda[i].endereco.pais);
             printf("Telefone: %s%s\n", agenda[i].telefone.ddd, agenda[i].telefone.numero);
-            printf("Aniversario: %s/%s/%s\n", agenda[i].data.dia, agenda[i].data.mes, agenda[i].data.ano);
-            printf("Observacoes: %s\n", agenda[i].observacao);
+            printf("Aniversário: %s/%s/%s\n", agenda[i].data.dia, agenda[i].data.mes, agenda[i].data.ano);
+            printf("Observações: %s\n", agenda[i].observacao);
         }
     }
 }
 
 void buscaMes (PESSOA agenda[]){ //busca pessoas pelo mês de aniversário (d)
     char mes[3];
-    printf("\nInsira o mes desejado: ");
+    printf("\nInsira o mês desejado: ");
     scanf("%s", mes);
     while ((mes[0] != '0' && mes[0] != '1') || (mes[0] == '1' && mes[1] > '2')){
-        printf("\nInsira um mes valido: ");
+        printf("\nInsira um mês válido: ");
         scanf("%s", mes);
     }
     for (int i = 0; i < pessoasInseridas; i++){
-        if (strcmp(agenda[i].data.mes,mes) == 0){
+        if (strcmp(agenda[i].data.mes, mes) == 0){
             printf("Nome: %s\n", agenda[i].nome);
             printf("E-mail: %s\n", agenda[i].eMail);
             printf("Rua: %s\n", agenda[i].endereco.rua);
@@ -153,21 +153,21 @@ void buscaMes (PESSOA agenda[]){ //busca pessoas pelo mês de aniversário (d)
 
 void buscaMeseDia (PESSOA agenda[]){ //busca pessoas pelo mês e dia de aniversário (e)
     char mes[3], dia[3];
-    printf("\nInsira o mes desejado: ");
+    printf("\nInsira o mês desejado: ");
     scanf("%s", mes);
     while ((mes[0] != '0' && mes[0] != '1') || (mes[0] == '1' && mes[1] > '2')){
-        printf("\nInsira um mes valido: ");
+        printf("\nInsira um mês válido: ");
         scanf("%s", mes);
     }
     printf("\nInsira o dia desejado: ");
     scanf("%s", dia);
     while (dia[0] > '3' || dia[0] < '0' || (dia[0] == '3' && dia[1] > '2')){ //falta validar dias para os meses certos (30 ou 31) e ano bissexto
-        printf("Insira um dia valido: ");
+        printf("\nInsira um dia válido: ");
         scanf("%s", dia);
     }
     for (int i = 0; i < 100; i++){
         if (strcmp(agenda[i].data.mes, mes) == 0 && strcmp(agenda[i].data.dia, dia) == 0){
-            printf("Nome: %s\n", agenda[i].nome);
+            printf("\n\nNome: %s\n", agenda[i].nome);
             printf("E-mail: %s\n", agenda[i].eMail);
             printf("Rua: %s\n", agenda[i].endereco.rua);
             printf("Número: %d\n", agenda[i].endereco.numero);
@@ -181,25 +181,26 @@ void buscaMeseDia (PESSOA agenda[]){ //busca pessoas pelo mês e dia de anivers�
             printf("Aniversário: %s/%s/%s\n", agenda[i].data.dia, agenda[i].data.mes, agenda[i].data.ano);
             printf("Observações: %s\n", agenda[i].observacao);
         }
+        
     }
 }
 
 void imprimeAgenda (PESSOA agenda[]){ //imprime a agenda de dois modos: nome, telefone e email ou todos os dados (c.2)
     int modo;
-    printf("\nQuais dados de cada pessoa de sua agenda voce gostaria de ver?\nOpções:\n1 - Nome, E-mail e Telefone\n2 - Todos (Nome, Telefone, E-mail, Endereco, Telefone, Aniversario etc)");
-    printf("\n\nEscolho a opcao: ");
+    printf("\nQuais dados de cada pessoa de sua agenda você gostaria de ver?\nOpções:\n1 - Nome, E-mail e Telefone\n2 - Todos (Nome, Telefone, E-mail, Endereco, Telefone, Aniversário etc)");
+    printf("\n\nEscolho a opção: ");
     scanf("%d", &modo);
     while (modo != 1 && modo != 2){
-        printf("\nOPCAO INVALIDA! Digite um numero de opcao valido:\n");
-        printf("Quais dados de cada pessoa de sua agenda voce gostaria de ver?\nOpcoes:\n1 - Nome, E-mail e Telefone\n2 - Todos (Nome, Telefone, E-mail, Endereco, Telefone, Aniversario etc)");
-        printf("\n\nEscolho a opcao: ");
+        printf("\nOpção inválida! Digite um número de opção válido:\n");
+        printf("Quais dados de cada pessoa de sua agenda você gostaria de ver?\nOpções:\n1 - Nome, E-mail e Telefone\n2 - Todos (Nome, Telefone, E-mail, Endereco, Telefone, Aniversário etc)");
+        printf("\n\nEscolho a opção: ");
         scanf("%d", &modo);
     }
     if (modo == 1){
         for (int i = 0; i < pessoasInseridas; i++){
             printf("\nNome: %s\n", agenda[i].nome);
             printf("E-mail: %s\n", agenda[i].eMail);
-            printf("Telefone: %s-%s\n", agenda[i].telefone.ddd, agenda[i].telefone.numero);
+            printf("Telefone: (%s) %s\n", agenda[i].telefone.ddd, agenda[i].telefone.numero);
         }
     }
     if (modo == 2){
@@ -207,16 +208,16 @@ void imprimeAgenda (PESSOA agenda[]){ //imprime a agenda de dois modos: nome, te
             printf("\nNome: %s\n", agenda[i].nome);
             printf("E-mail: %s\n", agenda[i].eMail);
             printf("Rua: %s\n", agenda[i].endereco.rua);
-            printf("Numero: %d\n", agenda[i].endereco.numero);
+            printf("Número: %d\n", agenda[i].endereco.numero);
             printf("Complemento: %s\n", agenda[i].endereco.complemento);
             printf("Bairro: %s\n", agenda[i].endereco.bairro);
             printf("CEP: %s\n", agenda[i].endereco.cep);
             printf("Cidade: %s\n", agenda[i].endereco.cidade);
             printf("Estado: %s\n", agenda[i].endereco.estado);
-            printf("Pais: %s\n", agenda[i].endereco.pais);
-            printf("Telefone: %s%s\n", agenda[i].telefone.ddd, agenda[i].telefone.numero);
-            printf("Aniversario: %s/%s/%s\n", agenda[i].data.dia, agenda[i].data.mes, agenda[i].data.ano);
-            printf("Observacoes: %s\n", agenda[i].observacao);
+            printf("País: %s\n", agenda[i].endereco.pais);
+            printf("Telefone: (%s) %s\n", agenda[i].telefone.ddd, agenda[i].telefone.numero);
+            printf("Aniversário: %s/%s/%s\n", agenda[i].data.dia, agenda[i].data.mes, agenda[i].data.ano);
+            printf("Observações: %s\n", agenda[i].observacao);
         }
     }
 }
@@ -224,12 +225,12 @@ void imprimeAgenda (PESSOA agenda[]){ //imprime a agenda de dois modos: nome, te
 int main (){
     int opc = 0;
     PESSOA agenda[100]; //declarar variável agenda (b)
-     //menu principal oferecendo as diversas opções distintas existentes nesse programa (a.3)
-        printf("\n-------------------- Seja bem-vindx a sua Agenda Digital! --------------------\n");
+    //menu principal oferecendo as diversas opções distintas existentes nesse programa (a.3)
+    printf("\n-------------------- Seja bem-vindx a sua Agenda Digital! --------------------");
     while (opc != 7){
-        printf("\nEscolha uma opcao:\n");
-        printf("1 - Inserir pessoa\n2 - Retirar pessoa\n3 - Buscar por nome\n4 - Buscar por mes\n5 - Buscar por mês e dia\n6 - Mostrar agenda\n7 - Sair\n");
-        printf("\nEscolho a opcao: ");
+        printf("\n\nEscolha uma dentre as opções a seguir:\n");
+        printf("1 - Inserir pessoa\n2 - Retirar pessoa\n3 - Buscar por nome\n4 - Buscar por mês do Aniversário\n5 - Buscar por mês e dia do Aniversário\n6 - Mostrar agenda\n7 - Sair\n");
+        printf("\nEscolho a opção: ");
         scanf("%d", &opc);
         switch (opc){
             case 1:
@@ -254,18 +255,19 @@ int main (){
             case 7:
                 break;
             default:
-                printf("\nComando invalido!\n");
+                printf("\nComando inválido!\n");
                 break;
         }
         do{
-            printf("\nDeseja continuar? \n1 - sim\n2 - nao\n");
-            scanf("%d",&opc);
-            if(opc!= 1 && opc != 2){
-                printf("Comando invalido\n");
-            }else if(opc == 2){
+            printf("\nDeseja continuar?\n1 - Sim\n2 - Não\n");
+            printf("\nEscolho: ");
+            scanf("%d", &opc);
+            if (opc != 1 && opc != 2){
+                printf("Comando inválido!\n");
+            }else if (opc == 2){
                 return 0;
             }
-        }while(opc!= 1 && opc != 2);
+        }while (opc != 1 && opc != 2);
     }
     return 0;
 }
