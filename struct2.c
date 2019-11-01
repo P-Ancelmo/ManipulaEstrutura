@@ -142,7 +142,7 @@ void retiraPessoa (PESSOA agenda[]){ //retira pessoa: retira todos os dados dess
         i++;
     }
     if (i == pessoasInseridas){
-        printf("\nNenhuma pessoa encontrada!\n\n");
+        printf("\n--Nenhuma pessoa encontrada!\n\n");
         return;
     }
     for (; i < pessoasInseridas - 1; i++){
@@ -154,6 +154,7 @@ void retiraPessoa (PESSOA agenda[]){ //retira pessoa: retira todos os dados dess
 
 void buscaNome (PESSOA agenda[]){ //busca pessoas pelo nome (c)
     char nome[41];
+    int pessoas = 0;
     printf("\nInsira o nome desejado: ");
     char c[40];
     gets(c);
@@ -173,12 +174,16 @@ void buscaNome (PESSOA agenda[]){ //busca pessoas pelo nome (c)
             printf("Telefone: %s%s\n", agenda[i].telefone.ddd, agenda[i].telefone.numero);
             printf("Aniversário: %s/%s/%s\n", agenda[i].data.dia, agenda[i].data.mes, agenda[i].data.ano);
             printf("Observações: %s\n", agenda[i].observacao);
+            pessoas = 1;
         }
     }
+    if(pessoas == 0)
+      printf("\n--Nenhuma pessoa encontrada\n");
 }
 
 void buscaMes (PESSOA agenda[]){ //busca pessoas pelo mês de aniversário (d)
     char mes[3];
+    int pessoas = 0;
     printf("\nInsira o mês desejado: ");
     scanf("%s", mes);
     while ((mes[0] != '0' && mes[0] != '1') || (mes[0] == '1' && mes[1] > '2')){
@@ -200,12 +205,16 @@ void buscaMes (PESSOA agenda[]){ //busca pessoas pelo mês de aniversário (d)
             printf("Telefone: %s%s\n", agenda[i].telefone.ddd, agenda[i].telefone.numero);
             printf("Aniversario: %s/%s/%s\n", agenda[i].data.dia, agenda[i].data.mes, agenda[i].data.ano);
             printf("Observacoes: %s\n", agenda[i].observacao);
+            pessoas = 1;
         }
     }
+    if(pessoas == 0)
+      printf("\n--Nenhuma pessoa encontrada\n");
 }
 
 void buscaMeseDia (PESSOA agenda[]){ //busca pessoas pelo mês e dia de aniversário (e)
     char mes[3], dia[3];
+    int pessoas = 0;
     printf("\nInsira o mês desejado: ");
     scanf("%s", mes);
     while ((mes[0] != '0' && mes[0] != '1') || (mes[0] == '1' && mes[1] > '2')){
@@ -233,9 +242,12 @@ void buscaMeseDia (PESSOA agenda[]){ //busca pessoas pelo mês e dia de anivers�
             printf("Telefone: %s%s\n", agenda[i].telefone.ddd, agenda[i].telefone.numero);
             printf("Aniversário: %s/%s/%s\n", agenda[i].data.dia, agenda[i].data.mes, agenda[i].data.ano);
             printf("Observações: %s\n", agenda[i].observacao);
+            pessoas = 1;
         }
 
     }
+    if(pessoas == 0)
+      printf("\n--Nenhuma pessoa encontrada\n");
 }
 
 void imprimeAgenda (PESSOA agenda[]){ //imprime a agenda de dois modos: nome, telefone e email ou todos os dados (c.2)
@@ -276,52 +288,58 @@ void imprimeAgenda (PESSOA agenda[]){ //imprime a agenda de dois modos: nome, te
 }
 
 int main (){
-    int opc = 0;
+    char opc = '0';
     PESSOA agenda[100]; //declarar variável agenda (b)
     //menu principal oferecendo as diversas opções distintas existentes nesse programa (a.3)
-    printf("\n-------------------- Seja bem-vindx a sua Agenda Digital! --------------------");
-    while (opc != 7){
+    printf("\n-------------------- Seja bem-vindo a sua Agenda Digital! --------------------");
+    while (opc != '7'){
         printf("\n\nEscolha uma dentre as opções a seguir:\n");
         printf("1 - Inserir pessoa\n2 - Retirar pessoa\n3 - Buscar por nome\n4 - Buscar por mês do Aniversário\n5 - Buscar por mês e dia do Aniversário\n6 - Mostrar agenda\n7 - Sair\n");
         printf("\nEscolho a opção: ");
-        scanf("%d", &opc);
-        switch (opc){
-            case 1:
-                inserePessoa(agenda);
-                arrumaAgenda(agenda);
-                break;
-            case 2:
-                retiraPessoa(agenda);
-                break;
-            case 3:
-                buscaNome(agenda);
-                break;
-            case 4:
-                buscaMes(agenda);
-                break;
-            case 5:
-                buscaMeseDia(agenda);
-                break;
-            case 6:
-                imprimeAgenda(agenda);
-                break;
-            case 7:
-                return 0;
-                break;
-            default:
-                printf("\nComando inválido!\n");
-                break;
+        scanf("%c", &opc);
+        getchar();
+        if(opc >= '1'  && opc <= '7' && opc != '1' && opc != '7' && pessoasInseridas==0){
+              printf("Agenda Vazia\n");
+        }else{
+          switch (opc){
+              case '1':
+                  inserePessoa(agenda);
+                  arrumaAgenda(agenda);
+                  break;
+              case '2':
+                  retiraPessoa(agenda);
+                  break;
+              case '3':
+                  buscaNome(agenda);
+                  break;
+              case '4':
+                  buscaMes(agenda);
+                  break;
+              case '5':
+                  buscaMeseDia(agenda);
+                  break;
+              case '6':
+                  imprimeAgenda(agenda);
+                  break;
+              case '7':
+                  return 0;
+                  break;
+              default:
+                  printf("\nComando inválido!\n");
+                  break;
+          }
         }
         do{
             printf("\nDeseja continuar?\n1 - Sim\n2 - Não\n");
             printf("\nEscolho: ");
-            scanf("%d", &opc);
-            if (opc != 1 && opc != 2){
+            scanf("%c", &opc);
+            getchar();
+            if (opc != '1' && opc != '2'){
                 printf("Comando inválido!\n");
-            }else if (opc == 2){
+            }else if (opc == '2'){
                 return 0;
             }
-        }while (opc != 1 && opc != 2);
+        }while (opc != '1' && opc != '2');
     }
     return 0;
 }
@@ -340,4 +358,8 @@ void arrumaAgenda (PESSOA agenda[]){
         }
         x++;
     }
+}
+
+void verificarPessoas(){
+
 }
