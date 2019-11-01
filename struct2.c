@@ -34,6 +34,7 @@ typedef struct{
 } PESSOA;
 
 int pessoasInseridas = 0;
+int verificacao2;
 void arrumaAgenda (PESSOA agenda[]);
 
 void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de nome (a.2)
@@ -52,18 +53,72 @@ void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de n
     gets(agenda[pessoasInseridas].endereco.complemento);
     printf("Bairro: ");
     gets(agenda[pessoasInseridas].endereco.bairro);
-    printf("CEP: ");
-    gets(agenda[pessoasInseridas].endereco.cep);
+    //printf("CEP: ");
+   //gets(agenda[pessoasInseridas].endereco.cep);
+
+    int verificacao = 0; //verificar o CEP
+    do
+    {
+      printf("CEP: ");
+      gets(agenda[pessoasInseridas].endereco.cep);
+      verificacao = 0; //verificar o CEP
+      for(int j = 0; j < 8; j++)
+      {
+        if(agenda[pessoasInseridas].endereco.cep[j] >= '0' && agenda[pessoasInseridas].endereco.cep[j] <= '9')
+          verificacao += 1;
+      }
+        if(verificacao != 8 || strlen(agenda[pessoasInseridas].endereco.cep) != 8){
+          printf("--CEP invalido, digite apenas 8 numeros--\n");
+        }
+    }while (verificacao < 8 || strlen(agenda[pessoasInseridas].endereco.cep) < 8);
+
+
     printf("Cidade: ");
     gets(agenda[pessoasInseridas].endereco.cidade);
-    printf("Estado: ");
-    gets(agenda[pessoasInseridas].endereco.estado);
+    //printf("Estado(Sigla): ");
+    //gets(agenda[pessoasInseridas].endereco.estado);
+    do
+    {
+      printf("Estado(Sigla): ");
+      gets(agenda[pessoasInseridas].endereco.estado);
+      if(strlen(agenda[pessoasInseridas].endereco.estado) != 2)
+        printf("Por favor insira a sigla(2 letras)\n");
+    }while(strlen(agenda[pessoasInseridas].endereco.estado) != 2);
+
     printf("País: ");
     gets(agenda[pessoasInseridas].endereco.pais);
-    printf("DDD: ");
-    gets(agenda[pessoasInseridas].telefone.ddd);
-    printf("Telefone: ");
-    gets(agenda[pessoasInseridas].telefone.numero);
+    //printf("DDD: ");
+    //gets(agenda[pessoasInseridas].telefone.ddd);
+    do
+    {
+      printf("DDD: ");
+      gets(agenda[pessoasInseridas].telefone.ddd);
+      verificacao2 = 0;
+      for(int j = 0; j < 2; j++)
+      {
+          if(agenda[pessoasInseridas].telefone.ddd[j] >= '0' && agenda[pessoasInseridas].telefone.ddd[j] <= '9')
+              verificacao2 += 1;
+      }
+      if(verificacao2 != 2 || strlen(agenda[pessoasInseridas].telefone.ddd) < 2)
+              printf("--Número invalido, digite exatamente 2 números, incluindo o DDD--\n");
+    }while(verificacao2 != 2 || strlen(agenda[pessoasInseridas].telefone.ddd) < 2);
+
+    //printf("Telefone: ");
+    //gets(agenda[pessoasInseridas].telefone.numero);
+    do
+        {
+            printf("Telefone: ");
+            gets(agenda[pessoasInseridas].telefone.numero);
+            verificacao2 = 0;
+            for(int j = 0; j < 9; j++)
+            {
+                if(agenda[pessoasInseridas].telefone.numero[j] >= '0' && agenda[pessoasInseridas].telefone.numero[j] <= '9')
+                    verificacao2 += 1;
+            }
+            if(verificacao2 != 9 || strlen(agenda[pessoasInseridas].telefone.numero) < 9)
+                    printf("--Número invalido, digite exatamente 9 números--\n");
+        }while(verificacao2 != 9 || strlen(agenda[pessoasInseridas].telefone.numero) < 9);
+
     printf("Aniversário\n");
     printf("Dia: ");
     gets(agenda[pessoasInseridas].data.dia);
@@ -179,7 +234,7 @@ void buscaMeseDia (PESSOA agenda[]){ //busca pessoas pelo mês e dia de anivers�
             printf("Aniversário: %s/%s/%s\n", agenda[i].data.dia, agenda[i].data.mes, agenda[i].data.ano);
             printf("Observações: %s\n", agenda[i].observacao);
         }
-        
+
     }
 }
 
@@ -251,6 +306,7 @@ int main (){
                 imprimeAgenda(agenda);
                 break;
             case 7:
+                return 0;
                 break;
             default:
                 printf("\nComando inválido!\n");
