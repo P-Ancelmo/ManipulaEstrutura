@@ -289,44 +289,55 @@ void imprimeAgenda (PESSOA agenda[]){ //imprime a agenda de dois modos: nome, te
 
 int main (){
 
-    int opc = 0;
+    char opc = 0;
     PESSOA agenda[100]; //declarar variável agenda (b)
     //menu principal oferecendo as diversas opções distintas existentes nesse programa (a.3)
     printf("\n-------------------- Seja bem-vindo a sua Agenda Digital! --------------------");
     while (opc != 7){
-        printf("\n\nEscolha uma dentre as opções a seguir:\n");
-        printf("1 - Inserir pessoa\n2 - Retirar pessoa\n3 - Buscar por nome\n4 - Buscar por mês do Aniversário\n5 - Buscar por mês e dia do Aniversário\n6 - Mostrar agenda\n7 - Sair\n");
-        printf("\nEscolho a opção: ");
-        scanf("%d", &opc);
-        /*if((char)opc < '1' || (char)opc > '7'){
+    	do{
+	        printf("\n\nEscolha uma dentre as opções a seguir:\n");
+	        printf("1 - Inserir pessoa\n2 - Retirar pessoa\n3 - Buscar por nome\n4 - Buscar por mês do Aniversário\n5 - Buscar por mês e dia do Aniversário\n6 - Mostrar agenda\n7 - Sair\n");
+	        printf("\nEscolho a opção: ");
+	        scanf("%c", &opc);
+	        //printf("=> %c\n",opc);
+	        //getchar();
+	        if(opc < '1' || opc > '7')
+	        {
+	        	getchar();
+	        	printf("Comando inválido\n");
+	        }
+	    }while(opc < '1' || opc > '7');
+
+        /*if(opc < '1' || opc > '7'){
           printf("Deu errado\n");
           return 1;
         }*/
-        if(opc >= 1  && opc <= 7 && opc != 1 && opc != 7 && pessoasInseridas==0){
-              printf("Agenda Vazia\n");
+        if(opc >= '1'  && opc <= '7' && opc != '1' && opc != '7' && pessoasInseridas==0){
+              printf("Agenda Vazia!\n");
+              getchar();
 
         }else{
           switch (opc){
-              case 1:
+              case '1':
                   inserePessoa(agenda);
                   arrumaAgenda(agenda);
                   break;
-              case 2:
+              case '2':
                   retiraPessoa(agenda);
                   break;
-              case 3:
+              case '3':
                   buscaNome(agenda);
                   break;
-              case 4:
+              case '4':
                   buscaMes(agenda);
                   break;
-              case 5:
+              case '5':
                   buscaMeseDia(agenda);
                   break;
-              case 6:
+              case '6':
                   imprimeAgenda(agenda);
                   break;
-              case 7:
+              case '7':
                   return 0;
                   break;
               default:
@@ -337,13 +348,15 @@ int main (){
         do{
             printf("\nDeseja continuar?\n1 - Sim\n2 - Não\n");
             printf("\nEscolho: ");
-            scanf("%d", &opc);
-            if (opc != 1 && opc != 2){
+            scanf("%c", &opc);
+            getchar();
+            if (opc != '1' && opc != '2'){
                 printf("Comando inválido!\n");
-            }else if (opc == 2){
+
+            }else if (opc == '2'){
                 return 0;
             }
-        }while (opc != 1 && opc != 2);
+        }while (opc != '1' && opc != '2');
     }
     return 0;
 }
@@ -367,3 +380,4 @@ void arrumaAgenda (PESSOA agenda[]){
 void verificarPessoas(){
 
 }
+
