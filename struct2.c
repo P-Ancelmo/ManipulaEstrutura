@@ -39,19 +39,19 @@ void arrumaAgenda (PESSOA agenda[]);
 
 void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de nome (a.2)
     char c[20];
-    printf("\nNome: ");
-    gets(agenda[pessoasInseridas].nome);
-    gets(c);
-    printf("E-mail: ");
+    printf("\nNome(máximo 40 caracteres): ");
+    gets(agenda[pessoasInseridas].nome);    
+    //gets(c);
+    printf("E-mail(máximo 40 caracteres): ");
     gets(agenda[pessoasInseridas].eMail);
-    printf("Rua: ");
+    printf("Rua(máximo 30 caracteres): ");
     gets(agenda[pessoasInseridas].endereco.rua);
     printf("Número: ");
     scanf("%d", &agenda[pessoasInseridas].endereco.numero);
-    printf("Complemento: ");
+    printf("Complemento(máximo 30 caracteres): ");
     gets(c);
     gets(agenda[pessoasInseridas].endereco.complemento);
-    printf("Bairro: ");
+    printf("Bairro(máximo 30 caracteres): ");
     gets(agenda[pessoasInseridas].endereco.bairro);
     //printf("CEP: ");
    //gets(agenda[pessoasInseridas].endereco.cep);
@@ -59,7 +59,7 @@ void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de n
     int verificacao = 0; //verificar o CEP
     do
     {
-      printf("CEP: ");
+      printf("CEP(exatos 8 números): ");
       gets(agenda[pessoasInseridas].endereco.cep);
       verificacao = 0; //verificar o CEP
       for(int j = 0; j < 8; j++)
@@ -73,7 +73,7 @@ void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de n
     }while (verificacao < 8 || strlen(agenda[pessoasInseridas].endereco.cep) != 8);
 
 
-    printf("Cidade: ");
+    printf("Cidade(máximo 20 caracteres): ");
     gets(agenda[pessoasInseridas].endereco.cidade);
     //printf("Estado(Sigla): ");
     //gets(agenda[pessoasInseridas].endereco.estado);
@@ -85,13 +85,13 @@ void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de n
         printf("Por favor insira a sigla(2 letras)\n");
     }while(strlen(agenda[pessoasInseridas].endereco.estado) != 2);
 
-    printf("País: ");
+    printf("País(máximo 30 caracteres): ");
     gets(agenda[pessoasInseridas].endereco.pais);
     //printf("DDD: ");
     //gets(agenda[pessoasInseridas].telefone.ddd);
     do
     {
-      printf("DDD: ");
+      printf("DDD(exatos 2 números): ");
       gets(agenda[pessoasInseridas].telefone.ddd);
       verificacao2 = 0;
       for(int j = 0; j < 2; j++)
@@ -107,7 +107,7 @@ void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de n
     //gets(agenda[pessoasInseridas].telefone.numero);
     do
         {
-            printf("Telefone: ");
+            printf("Telefone(exatos 9 números): ");
             gets(agenda[pessoasInseridas].telefone.numero);
             verificacao2 = 0;
             for(int j = 0; j < 9; j++)
@@ -119,14 +119,57 @@ void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de n
                     printf("--Número invalido, digite exatamente 9 números--\n");
         }while(verificacao2 != 9 || strlen(agenda[pessoasInseridas].telefone.numero) != 9);
 
-    printf("Aniversário\n");
-    printf("Dia: ");
-    gets(agenda[pessoasInseridas].data.dia);
-    printf("Mês: ");
-    gets(agenda[pessoasInseridas].data.mes);
-    printf("Ano: ");
-    gets(agenda[pessoasInseridas].data.ano);
-    printf("Observações: ");
+    printf("Aniversário:\n");
+    
+    do
+    {
+	    printf("Dia(exatos 2 números): ");    
+	    gets(agenda[pessoasInseridas].data.dia);
+	 	verificacao2 = 0;
+        for(int j = 0; j < 2; j++)
+        {
+            if(agenda[pessoasInseridas].data.dia[j] >= '0' && agenda[pessoasInseridas].data.dia[j] <= '9')
+                verificacao2 += 1;
+        }
+        if(verificacao2 != 2 || strlen(agenda[pessoasInseridas].data.dia) != 2)
+            printf("--Número invalido, digite exatamente 2 números--\n");
+	}while(verificacao2 != 2 || strlen(agenda[pessoasInseridas].data.dia) != 2);
+
+	do
+    {
+	    printf("Mês(exatos 2 números): ");
+    	gets(agenda[pessoasInseridas].data.mes);
+	 	verificacao2 = 0;
+        for(int j = 0; j < 2; j++)
+        {
+            if(agenda[pessoasInseridas].data.mes[j] >= '0' && agenda[pessoasInseridas].data.mes[j] <= '9')
+                verificacao2 += 1;
+        }
+        if(verificacao2 != 2 || strlen(agenda[pessoasInseridas].data.mes) != 2)
+            printf("--Número invalido, digite exatamente 2 números--\n");
+	}while(verificacao2 != 2 || strlen(agenda[pessoasInseridas].data.mes) != 2);
+
+    //printf("Mês(exatos 2 números): ");
+    //gets(agenda[pessoasInseridas].data.mes);
+
+	do
+    {
+	    printf("Ano(exatos 4 números): ");
+    	gets(agenda[pessoasInseridas].data.ano);
+	 	verificacao2 = 0;
+        for(int j = 0; j < 4; j++)
+        {
+            if(agenda[pessoasInseridas].data.ano[j] >= '0' && agenda[pessoasInseridas].data.ano[j] <= '9')
+                verificacao2 += 1;
+        }
+        if(verificacao2 != 4 || strlen(agenda[pessoasInseridas].data.ano) != 4)
+            printf("--Número invalido, digite exatamente 4 números--\n");
+	}while(verificacao2 != 4 || strlen(agenda[pessoasInseridas].data.ano) != 4);	
+
+    //printf("Ano(exatos 4 números): ");
+    //gets(agenda[pessoasInseridas].data.ano);
+
+    printf("Observações(máximo 100 caracteres): ");
     gets(agenda[pessoasInseridas].observacao);
     printf("\nPessoa Inserida com sucesso!\n\n");
     pessoasInseridas++;
@@ -136,7 +179,7 @@ void retiraPessoa (PESSOA agenda[]){ //retira pessoa: retira todos os dados dess
     char nome[41];
     printf("\nQual pessoa gostaria de retirar de sua agenda? (Atenção: ao digitar o nome dessa pessoa você estará retirando todos os dados da mesma)\n");
     printf("Nome da pessoa a ser retirada: ");
-    scanf("%s", nome);
+    scanf("%s", nome);    
     int i = 0;
     while (strncmp(agenda[i].nome, nome, strlen(nome)) != 0 && i < pessoasInseridas){
         i++;
@@ -157,7 +200,7 @@ void buscaNome (PESSOA agenda[]){ //busca pessoas pelo nome (c)
     int pessoas = 0;
     printf("\nInsira o nome desejado: ");
     char c[40];
-    gets(c);
+    //gets(c);
     gets(nome);
     for (int i = 0; i < pessoasInseridas; i++){
         if (strncmp(agenda[i].nome, nome, strlen(nome)) == 0){
@@ -169,9 +212,9 @@ void buscaNome (PESSOA agenda[]){ //busca pessoas pelo nome (c)
             printf("Bairro: %s\n", agenda[i].endereco.bairro);
             printf("CEP: %s\n", agenda[i].endereco.cep);
             printf("Cidade: %s\n", agenda[i].endereco.cidade);
-            printf("Estado: %s\n", agenda[i].endereco.estado);
+            printf("Estado(Sigla): %s\n", agenda[i].endereco.estado);
             printf("País: %s\n", agenda[i].endereco.pais);
-            printf("Telefone: %s%s\n", agenda[i].telefone.ddd, agenda[i].telefone.numero);
+            printf("Telefone com DDD: (%s) %s\n", agenda[i].telefone.ddd, agenda[i].telefone.numero);
             printf("Aniversário: %s/%s/%s\n", agenda[i].data.dia, agenda[i].data.mes, agenda[i].data.ano);
             printf("Observações: %s\n", agenda[i].observacao);
             pessoas = 1;
@@ -202,7 +245,7 @@ void buscaMes (PESSOA agenda[]){ //busca pessoas pelo mês de aniversário (d)
             printf("Cidade: %s\n", agenda[i].endereco.cidade);
             printf("Estado: %s\n", agenda[i].endereco.estado);
             printf("Pais: %s\n", agenda[i].endereco.pais);
-            printf("Telefone: %s%s\n", agenda[i].telefone.ddd, agenda[i].telefone.numero);
+            printf("Telefone com DDD: (%s) %s\n", agenda[i].telefone.ddd, agenda[i].telefone.numero);
             printf("Aniversario: %s/%s/%s\n", agenda[i].data.dia, agenda[i].data.mes, agenda[i].data.ano);
             printf("Observacoes: %s\n", agenda[i].observacao);
             pessoas = 1;
@@ -239,7 +282,7 @@ void buscaMeseDia (PESSOA agenda[]){ //busca pessoas pelo mês e dia de anivers�
             printf("Cidade: %s\n", agenda[i].endereco.cidade);
             printf("Estado: %s\n", agenda[i].endereco.estado);
             printf("País: %s\n", agenda[i].endereco.pais);
-            printf("Telefone: %s%s\n", agenda[i].telefone.ddd, agenda[i].telefone.numero);
+            printf("Telefone com DDD: (%s) %s\n", agenda[i].telefone.ddd, agenda[i].telefone.numero);
             printf("Aniversário: %s/%s/%s\n", agenda[i].data.dia, agenda[i].data.mes, agenda[i].data.ano);
             printf("Observações: %s\n", agenda[i].observacao);
             pessoas = 1;
@@ -299,6 +342,7 @@ int main (){
 	        printf("1 - Inserir pessoa\n2 - Retirar pessoa\n3 - Buscar por nome\n4 - Buscar por mês do Aniversário\n5 - Buscar por mês e dia do Aniversário\n6 - Mostrar agenda\n7 - Sair\n");
 	        printf("\nEscolho a opção: ");
 	        scanf("%c", &opc);
+	        getchar();
 	        //printf("=> %c\n",opc);
 	        //getchar();
 	        if(opc < '1' || opc > '7')
