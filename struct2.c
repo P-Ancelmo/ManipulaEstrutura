@@ -70,7 +70,7 @@ void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de n
         if(verificacao != 8 || strlen(agenda[pessoasInseridas].endereco.cep) != 8){
           printf("--CEP invalido, digite apenas 8 numeros--\n");
         }
-    }while (verificacao < 8 || strlen(agenda[pessoasInseridas].endereco.cep) < 8);
+    }while (verificacao < 8 || strlen(agenda[pessoasInseridas].endereco.cep) != 8);
 
 
     printf("Cidade: ");
