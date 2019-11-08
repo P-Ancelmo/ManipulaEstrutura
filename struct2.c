@@ -99,9 +99,9 @@ void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de n
           if(agenda[pessoasInseridas].telefone.ddd[j] >= '0' && agenda[pessoasInseridas].telefone.ddd[j] <= '9')
               verificacao2 += 1;
       }
-      if(verificacao2 != 2 || strlen(agenda[pessoasInseridas].telefone.ddd) < 2)
+      if(verificacao2 != 2 || strlen(agenda[pessoasInseridas].telefone.ddd) != 2)
               printf("--Número invalido, digite exatamente 2 números, incluindo o DDD--\n");
-    }while(verificacao2 != 2 || strlen(agenda[pessoasInseridas].telefone.ddd) < 2);
+    }while(verificacao2 != 2 || strlen(agenda[pessoasInseridas].telefone.ddd) != 2);
 
     //printf("Telefone: ");
     //gets(agenda[pessoasInseridas].telefone.numero);
@@ -115,9 +115,9 @@ void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de n
                 if(agenda[pessoasInseridas].telefone.numero[j] >= '0' && agenda[pessoasInseridas].telefone.numero[j] <= '9')
                     verificacao2 += 1;
             }
-            if(verificacao2 != 9 || strlen(agenda[pessoasInseridas].telefone.numero) < 9)
+            if(verificacao2 != 9 || strlen(agenda[pessoasInseridas].telefone.numero) != 9)
                     printf("--Número invalido, digite exatamente 9 números--\n");
-        }while(verificacao2 != 9 || strlen(agenda[pessoasInseridas].telefone.numero) < 9);
+        }while(verificacao2 != 9 || strlen(agenda[pessoasInseridas].telefone.numero) != 9);
 
     printf("Aniversário\n");
     printf("Dia: ");
