@@ -40,7 +40,7 @@ void arrumaAgenda (PESSOA agenda[]);
 void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de nome (a.2)
     char c[20];
     printf("\nNome(máximo 40 caracteres): ");
-    gets(agenda[pessoasInseridas].nome);    
+    gets(agenda[pessoasInseridas].nome);
     //gets(c);
     printf("E-mail(máximo 40 caracteres): ");
     gets(agenda[pessoasInseridas].eMail);
@@ -79,11 +79,11 @@ void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de n
     //gets(agenda[pessoasInseridas].endereco.estado);
     do
     {
-      printf("Estado(Sigla): ");
+      printf("Estado(Sigla maiúscula): ");
       gets(agenda[pessoasInseridas].endereco.estado);
-      if(strlen(agenda[pessoasInseridas].endereco.estado) != 2)
-        printf("Por favor insira a sigla(2 letras)\n");
-    }while(strlen(agenda[pessoasInseridas].endereco.estado) != 2);
+      if(strlen(agenda[pessoasInseridas].endereco.estado) != 2 || agenda[pessoasInseridas].endereco.estado[0] < 'A' || agenda[pessoasInseridas].endereco.estado[0] > 'Z'|| agenda[pessoasInseridas].endereco.estado[1] < 'A' || agenda[pessoasInseridas].endereco.estado[1] > 'Z')
+        printf("Por favor insira a sigla(2 letras maiúscula)\n");
+    }while(strlen(agenda[pessoasInseridas].endereco.estado) != 2 || agenda[pessoasInseridas].endereco.estado[0] < 'A' || agenda[pessoasInseridas].endereco.estado[0] > 'Z'|| agenda[pessoasInseridas].endereco.estado[1] < 'A' || agenda[pessoasInseridas].endereco.estado[1] > 'Z');
 
     printf("País(máximo 30 caracteres): ");
     gets(agenda[pessoasInseridas].endereco.pais);
@@ -120,10 +120,10 @@ void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de n
         }while(verificacao2 != 9 || strlen(agenda[pessoasInseridas].telefone.numero) != 9);
 
     printf("Aniversário:\n");
-    
+
     do
     {
-	    printf("Dia(exatos 2 números): ");    
+	    printf("Dia(exatos 2 números): ");
 	    gets(agenda[pessoasInseridas].data.dia);
 	 	verificacao2 = 0;
         for(int j = 0; j < 2; j++)
@@ -164,7 +164,7 @@ void inserePessoa (PESSOA agenda[]){ //insere pessoas por ordem alfabética de n
         }
         if(verificacao2 != 4 || strlen(agenda[pessoasInseridas].data.ano) != 4)
             printf("--Número invalido, digite exatamente 4 números--\n");
-	}while(verificacao2 != 4 || strlen(agenda[pessoasInseridas].data.ano) != 4);	
+	}while(verificacao2 != 4 || strlen(agenda[pessoasInseridas].data.ano) != 4);
 
     //printf("Ano(exatos 4 números): ");
     //gets(agenda[pessoasInseridas].data.ano);
@@ -179,7 +179,7 @@ void retiraPessoa (PESSOA agenda[]){ //retira pessoa: retira todos os dados dess
     char nome[41];
     printf("\nQual pessoa gostaria de retirar de sua agenda? (Atenção: ao digitar o nome dessa pessoa você estará retirando todos os dados da mesma)\n");
     printf("Nome da pessoa a ser retirada: ");
-    scanf("%s", nome);    
+    scanf("%s", nome);
     getchar();
     int i = 0;
     while (strncmp(agenda[i].nome, nome, strlen(nome)) != 0 && i < pessoasInseridas){
@@ -307,8 +307,8 @@ void imprimeAgenda (PESSOA agenda[]){ //imprime a agenda de dois modos: nome, te
     printf("\n\nEscolho a opção: ");
     scanf("%c", &modo);
     getchar();
-    
-    //getchar();    
+
+    //getchar();
     while (modo != '1' && modo != '2'){
         printf("\nOpção inválida! Digite um número de opção válido:\n");
         printf("Quais dados de cada pessoa de sua agenda você gostaria de ver?\nOpções:\n1 - Nome, E-mail e Telefone\n2 - Todos (Nome, Telefone, E-mail, Endereco, Telefone, Aniversário etc)");
@@ -359,7 +359,7 @@ int main (){
 	        //getchar();
 	        if(opc < '1' || opc > '7')
 	        {
-	        	getchar();
+	        	//getchar();
 	        	printf("Comando inválido\n");
 	        }
 	    }while(opc < '1' || opc > '7');
@@ -369,7 +369,7 @@ int main (){
           return 1;
         }*/
         if(opc >= '1'  && opc <= '7' && opc != '1' && opc != '7' && pessoasInseridas==0){
-              printf("Agenda Vazia!\n");              
+              printf("Agenda Vazia!\n");
 
         }else{
           switch (opc){
@@ -435,4 +435,3 @@ void arrumaAgenda (PESSOA agenda[]){
 void verificarPessoas(){
 
 }
-
